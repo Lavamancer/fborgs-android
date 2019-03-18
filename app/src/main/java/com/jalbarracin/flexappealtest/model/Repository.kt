@@ -30,13 +30,14 @@ data class Repository (
     var hasPages: Boolean? = null,
     var forksCount: Int? = null,
     var archived: Boolean? = null,
-    var openIssuesCount: Int? = null,
     var forks: Int? = null,
     var openIssues: Int? = null,
     var watchers: Int? = null,
     var defaultBranch: String? = null,
-    var permissions: Map<String, Boolean>? = null
-
+    var permissions: Map<String, Boolean>? = null,
+    var license: License? = null,
+    var homepage: String? = null,
+    var score: Float? = null
 
     ): Serializable
 

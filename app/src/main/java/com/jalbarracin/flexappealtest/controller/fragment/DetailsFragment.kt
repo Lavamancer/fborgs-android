@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jalbarracin.flexappealtest.R
+import com.jalbarracin.flexappealtest.model.Repository
+import com.jalbarracin.flexappealtest.service.tool.ColorTool
+import kotlinx.android.synthetic.main.fragment_details.*
+import java.util.*
 
 
 class DetailsFragment: Fragment() {
@@ -17,6 +21,29 @@ class DetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("Hello Details")
+
+        val repository: Repository = activity!!.intent.getSerializableExtra("repository") as Repository
+
+        nameTextView.text = repository.name
+        fullNameTextView.text = repository.fullName
+        updatedAtTextView.text = "Updated on ${repository.updatedAt!!.toString("dd MMMM yyyy", Locale.ENGLISH)}"
+        descriptionTextView.text = repository.description
+
+        if (repository.language == null) {
+            languageIconView.visibility = View.GONE
+        } else {
+            languageIconView.visibility = View.VISIBLE
+            languageTextView.text = repository.language
+            languageIconView.setColorResource(ColorTool.getColorResourceByText(repository.language))
+        }
+
+        watchersTextView.text = repository.watchers.toString()
+        forksTextView.text = repository.forks.toString()
+        openIssuesTextView.text = repository.openIssues.toString()
+        defaultBranchTextView.text = repository.defaultBranch
+        licenseTextView.text = repository.license!!.name
+        scoreTextView.text = "${repository.score}"
+        homepageTextView.text = repository.homepage
+        sizeTextView.text = "${repository.size}"
     }
 }

@@ -31,6 +31,7 @@ class RepositoryAdapter(
         var languageTextView: TextView = view.languageTextView
         var watchersTextView: TextView = view.watchersTextView
         var forksTextView: TextView = view.forksTextView
+        var openIssuesTextView: TextView = view.openIssuesTextView
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -51,6 +52,7 @@ class RepositoryAdapter(
 
         holder.watchersTextView.text = repository.watchers.toString()
         holder.forksTextView.text = repository.forks.toString()
+        holder.openIssuesTextView.text = repository.openIssues.toString()
 
         holder.linearLayout.setOnClickListener {
             val intent = Intent(activity, RepositoryActivity::class.java)

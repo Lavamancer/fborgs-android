@@ -4,19 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="50dp">
 
-    <net.steamcrafted.materialiconlib.MaterialIconView
-        android:id="@+id/sideMenuButton"
-        android:layout_marginStart="5dp"
+    <FrameLayout
+        android:id="@+id/leftIconsFrameLayout"
         android:layout_centerVertical="true"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="42dp"
-        android:layout_height="42dp"
-        app:materialIcon="menu"
-        app:materialIconColor="#fff"
-        app:materialIconSize="36dp"
-        android:scaleType="center"/>
+        android:layout_height="42dp">
+
+        <net.steamcrafted.materialiconlib.MaterialIconView
+            android:id="@+id/backIconView"
+            android:visibility="gone"
+            android:layout_marginStart="5dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:materialIcon="arrow_left"
+            app:materialIconColor="#fff"
+            app:materialIconSize="36dp"
+            android:scaleType="center"/>
+        <net.steamcrafted.materialiconlib.MaterialIconView
+            android:id="@+id/sideMenuIconView"
+            android:layout_marginStart="5dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:materialIcon="menu"
+            app:materialIconColor="#fff"
+            app:materialIconSize="36dp"
+            android:scaleType="center"/>
+    </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/titleLinearLayout"
+        android:visibility="visible"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
@@ -39,15 +58,37 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/searchRelativeLayout"
+        android:visibility="gone"
+        android:layout_toEndOf="@id/leftIconsFrameLayout"
+        android:layout_toStartOf="@id/searchIconView"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/searchEditText"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:hint="Search..."
+            android:textColorHint="@color/orangeWhite"
+            style="@style/CustomTextViewStyle"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
     <net.steamcrafted.materialiconlib.MaterialIconView
-            android:id="@+id/filterButton"
+            android:id="@+id/searchIconView"
             android:layout_marginEnd="5dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            app:materialIcon="map"
+            app:materialIcon="magnify"
             app:materialIconColor="#fff"
             app:materialIconSize="36dp"
             android:scaleType="center"/>

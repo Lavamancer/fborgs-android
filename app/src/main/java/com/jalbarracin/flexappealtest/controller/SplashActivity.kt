@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Observable.timer(0, TimeUnit.SECONDS)
+        Observable.timer(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.computation())
                 .doOnNext {
 //                    FakerTool.load()

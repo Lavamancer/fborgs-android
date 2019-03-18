@@ -1,4 +1,4 @@
-package com.jalbarracin.flexappealtest.service
+package com.jalbarracin.flexappealtest.service.tool
 
 import com.github.javafaker.Faker
 

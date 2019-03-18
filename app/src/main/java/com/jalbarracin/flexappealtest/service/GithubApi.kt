@@ -1,13 +1,13 @@
 package com.jalbarracin.flexappealtest.service
 
-import com.jalbarracin.flexappealtest.model.response.GithubResponse
 import com.jalbarracin.flexappealtest.model.Repository
+import com.jalbarracin.flexappealtest.model.response.GithubResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface ApiRepository {
+interface GithubApi {
 
     @GET("/search/repositories")
     fun getSearchRepositories(

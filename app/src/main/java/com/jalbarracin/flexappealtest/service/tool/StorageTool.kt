@@ -1,4 +1,4 @@
-package com.jalbarracin.flexappealtest.service
+package com.jalbarracin.flexappealtest.service.tool
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

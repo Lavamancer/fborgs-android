@@ -1,12 +1,14 @@
 package com.jalbarracin.flexappealtest.controller.adapter
 
 import android.app.Activity
+import android.content.Intent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.jalbarracin.flexappealtest.R
+import com.jalbarracin.flexappealtest.controller.RepositoryActivity
 import com.jalbarracin.flexappealtest.model.Repository
-import com.jalbarracin.flexappealtest.service.ColorTool
+import com.jalbarracin.flexappealtest.service.tool.ColorTool
 import kotlinx.android.synthetic.main.item_repository.view.*
 import net.steamcrafted.materialiconlib.MaterialIconView
 import java.util.*
@@ -49,6 +51,12 @@ class RepositoryAdapter(
 
         holder.watchersTextView.text = repository.watchers.toString()
         holder.forksTextView.text = repository.forks.toString()
+
+        holder.linearLayout.setOnClickListener {
+            val intent = Intent(activity, RepositoryActivity::class.java)
+            intent.putExtra("repository", repository)
+            activity.startActivity(intent)
+        }
     }
 
 //        holder.authorTextView.text = "Id: ${repository.nodeId}"

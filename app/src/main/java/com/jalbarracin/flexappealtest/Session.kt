@@ -1,7 +1,7 @@
 package com.jalbarracin.flexappealtest
 
 import android.app.Application
-import com.jalbarracin.flexappealtest.service.StorageTool
+import com.jalbarracin.flexappealtest.service.tool.StorageTool
 import java.io.Serializable
 
 

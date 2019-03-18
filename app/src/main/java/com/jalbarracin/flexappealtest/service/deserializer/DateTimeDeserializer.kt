@@ -1,4 +1,4 @@
-package com.jalbarracin.flexappealtest.service
+package com.jalbarracin.flexappealtest.service.deserializer
 
 import com.google.gson.*
 import org.joda.time.DateTime

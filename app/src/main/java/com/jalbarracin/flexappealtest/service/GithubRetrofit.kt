@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jalbarracin.flexappealtest.controller.MainActivity
 import com.jalbarracin.flexappealtest.controller.ProgressBarController
+import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -18,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object GithubRetrofit {
 
-    private var apiRepository: ApiRepository
+    private var githubApi: GithubApi
 
 
     init {
@@ -29,12 +30,14 @@ object GithubRetrofit {
             .addConverterFactory(GsonConverterFactory.create(createGson()))
             .build()
 
-        apiRepository = retrofit.create<ApiRepository>(ApiRepository::class.java)
+        githubApi = retrofit.create<GithubApi>(GithubApi::class.java)
     }
 
     private fun createGson(): Gson {
         val gsonBuilder = GsonBuilder()
-        gsonBuilder.registerTypeAdapter(DateTime::class.java, DateTimeDeserializer())
+        gsonBuilder.registerTypeAdapter(DateTime::class.java,
+            DateTimeDeserializer()
+        )
         return gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
     }
 
@@ -55,7 +58,7 @@ object GithubRetrofit {
         }
         println("Q $q")
         activity.compositeDisposable.add(
-            apiRepository.getSearchRepositories(q, offset, 20)
+            githubApi.getSearchRepositories(q, offset, 20)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({

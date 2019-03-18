@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:clickable="true"
+              android:background="@color/orangeWhiteLighter"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+
+        <ImageView
+                android:id="@+id/sidemenu_profile_imageview"
+                android:src="@color/orangeLight"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        <ImageView
+                android:layout_alignParentBottom="true"
+                android:background="@color/orangeWhiteLighter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/sidemenu_name_textview"
+                    style="@style/CustomTextViewStyle"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:text="Juan Albarracín Quiñonero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    style="@style/CustomTextViewStyle"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:text="Abonado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        <TextView
+                style="@style/CustomTextViewStyle"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:text="Menú"
+                android:textColor="@color/orange"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/logoutIconView"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="5dp"
+                android:layout_centerVertical="true"
+                app:materialIcon="logout_variant"
+                app:materialIconColor="@color/orangeWhite"
+                android:layout_alignParentEnd="true"
+                app:materialIconSize="36dp"
+                android:scaleType="center"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_marginTop="1dp"
+            android:background="@color/orange"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    style="@style/CustomTextViewStyle"
+                    android:text="© 2019 Juan Albarracin."
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    style="@style/CustomTextViewStyle"
+                    android:text="All rights reserved."
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/facebookIconView"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    app:materialIcon="facebook"
+                    app:materialIconColor="#fff"
+                    app:materialIconSize="36dp"
+                    android:scaleType="center"/>
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/twitterIconView"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    app:materialIcon="twitter"
+                    app:materialIconColor="#fff"
+                    app:materialIconSize="36dp"
+                    android:scaleType="center"/>
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/shareIconView"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    app:materialIcon="share_variant"
+                    app:materialIconColor="#fff"
+                    app:materialIconSize="36dp"
+                    android:scaleType="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

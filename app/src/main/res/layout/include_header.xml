@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/orangeLighter"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <net.steamcrafted.materialiconlib.MaterialIconView
+        android:id="@+id/sideMenuButton"
+        android:layout_marginStart="5dp"
+        android:layout_centerVertical="true"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        app:materialIcon="menu"
+        app:materialIconColor="#fff"
+        app:materialIconSize="36dp"
+        android:scaleType="center"/>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Flex-Appeal"
+            style="@style/CustomTextViewStyle"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Android Recruitment Test"
+            style="@style/CustomTextViewStyle"
+            android:textColor="@color/white"
+            android:layout_marginTop="-5dp"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <net.steamcrafted.materialiconlib.MaterialIconView
+            android:id="@+id/filterButton"
+            android:layout_marginEnd="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:materialIcon="map"
+            app:materialIconColor="#fff"
+            app:materialIconSize="36dp"
+            android:scaleType="center"/>
+
+</RelativeLayout>

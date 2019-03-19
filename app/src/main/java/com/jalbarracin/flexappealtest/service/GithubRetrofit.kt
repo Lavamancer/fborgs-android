@@ -1,9 +1,11 @@
 package com.jalbarracin.flexappealtest.service
 
+import android.view.View
 import android.widget.Toast
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.MainActivity
 import com.jalbarracin.flexappealtest.controller.RepositoryActivity
 import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
@@ -12,6 +14,9 @@ import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import com.jalbarracin.flexappealtest.service.tool.ProgressBarTool
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_contributors.*
+import kotlinx.android.synthetic.main.fragment_issues.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.joda.time.DateTime
@@ -23,12 +28,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 object GithubRetrofit {
 
     private const val PAGINATION_LIMIT = 20
+    private const val BASE_URL = "https://api.github.com"
+    private const val PARAM_ORG_FACEBOOK = "org:facebook"
+    private const val PARAM_IN_NAME = "in:name"
+
 
     private var githubApi: GithubApi
 
 
     init {
-        val builder = Retrofit.Builder().baseUrl("https://api.github.com")
+        val builder = Retrofit.Builder().baseUrl(BASE_URL)
         builder.client(createHttpClient())
         val retrofit = builder
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -56,22 +65,24 @@ object GithubRetrofit {
 
     fun getSearch(activity: MainActivity, newSearch: Boolean, offset: Int = 0, searchText: String? = null) {
         activity.countingIdlingResource.increment()
-        val dialog = ProgressBarTool.create(activity)
-        dialog.show()
-        var q = "org:facebook"
+
+        val dialog = if (activity.repositoryAdapter.list.isEmpty()) ProgressBarTool.create(activity) else null
+        if (dialog != null) dialog.show() else activity.repositoryProgressBar.visibility = View.VISIBLE
+
+        var q = PARAM_ORG_FACEBOOK
         if (searchText != null) {
-            q += " $searchText in:name"
+            q += " $searchText $PARAM_IN_NAME"
         }
         activity.compositeDisposable.add(
             githubApi.getSearchRepositories(q, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
-                    dialog.dismiss()
+                    if (dialog != null) dialog.dismiss() else activity.repositoryProgressBar.visibility = View.GONE
                     activity.updateListView(it.items, it.totalCount, newSearch)
                 },{
-                    dialog.dismiss()
-                    Toast.makeText(activity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
+                    if (dialog != null) dialog.dismiss() else activity.repositoryProgressBar.visibility = View.GONE
+                    Toast.makeText(activity, activity.getString(R.string.github_forbidden_response), Toast.LENGTH_SHORT).show()
                     activity.updateListView(ArrayList(), 0, newSearch)
                 })
         )
@@ -79,28 +90,34 @@ object GithubRetrofit {
 
     fun getContributors(fragment: ContributorsFragment, offset: Int = 0) {
         val repositoryActivity = (fragment.activity as RepositoryActivity)
+        repositoryActivity.contributorsProgressBar.visibility = View.VISIBLE
         repositoryActivity.compositeDisposable.add(
             githubApi.getContributors(repositoryActivity.repository.name, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     fragment.updateListView(it)
+                    repositoryActivity.contributorsProgressBar.visibility = View.GONE
                 },{
-                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(repositoryActivity, fragment.getString(R.string.github_forbidden_response), Toast.LENGTH_SHORT).show()
+                    repositoryActivity.contributorsProgressBar.visibility = View.GONE
                 })
         )
     }
 
     fun getIssues(fragment: IssuesFragment, offset: Int = 0) {
         val repositoryActivity = (fragment.activity as RepositoryActivity)
+        repositoryActivity.issuesProgressBar.visibility = View.VISIBLE
         repositoryActivity.compositeDisposable.add(
             githubApi.getIssues(repositoryActivity.repository.name, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     fragment.updateListView(it)
+                    repositoryActivity.issuesProgressBar.visibility = View.GONE
                 },{
-                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(repositoryActivity, fragment.getString(R.string.github_forbidden_response), Toast.LENGTH_SHORT).show()
+                    repositoryActivity.issuesProgressBar.visibility = View.GONE
                 })
         )
     }

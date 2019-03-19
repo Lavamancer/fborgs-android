@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flex-Appeal Test</string>
+    <string name="github_forbidden_response">Github only allows 10 calls per minute or 60 per hour</string>
 </resources>

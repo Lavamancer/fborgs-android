@@ -42,6 +42,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/repositoryProgressBar"
+                android:indeterminateTint="@color/orangeStrong"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="bottom|center_horizontal" />
+
         </FrameLayout>
 
     </LinearLayout>

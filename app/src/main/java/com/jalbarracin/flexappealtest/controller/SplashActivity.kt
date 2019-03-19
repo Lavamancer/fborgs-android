@@ -24,8 +24,8 @@ class SplashActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.computation())
                 .subscribe {
                     startActivity(Intent(this, MainActivity::class.java))
-                    overridePendingTransition(0, 0)
                     finish()
+                    overridePendingTransition(0, 0)
                 }
         )
     }

@@ -27,6 +27,8 @@ class RepositoryActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.jalbarracin.flexappealtest.R.layout.activity_repository)
+        repository = intent.getSerializableExtra("repository") as Repository
+        compositeDisposable = CompositeDisposable()
         configureViews()
     }
 
@@ -36,8 +38,6 @@ class RepositoryActivity: AppCompatActivity() {
     }
 
     private fun configureViews() {
-        repository = intent.getSerializableExtra("repository") as Repository
-        compositeDisposable = CompositeDisposable()
         typefaceCondensed(tabLayout)
         val fragments = ArrayList<Fragment>()
         fragments.add(DetailsFragment())

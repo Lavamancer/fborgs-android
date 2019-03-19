@@ -53,6 +53,7 @@ object GithubRetrofit {
     }
 
     fun getSearch(activity: MainActivity, newSearch: Boolean, offset: Int = 0, searchText: String? = null) {
+        activity.countingIdlingResource.increment()
         val dialog = ProgressBarController.create(activity)
         dialog.show()
         var q = "org:facebook"

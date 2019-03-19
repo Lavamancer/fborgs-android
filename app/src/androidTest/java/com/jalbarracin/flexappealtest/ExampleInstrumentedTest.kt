@@ -16,7 +16,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.jalbarracin.flexappealtest", appContext.packageName)
+        val appContext = InstrumentationRegistry.getInstrumentation().context
+        assertEquals("com.jalbarracin.flexappealtest.test", appContext.packageName)
     }
 }

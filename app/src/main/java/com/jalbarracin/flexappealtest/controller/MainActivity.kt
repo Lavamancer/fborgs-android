@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.adapter.RepositoryAdapter
 import com.jalbarracin.flexappealtest.model.Repository
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.include_header.*
 
 class MainActivity : AppCompatActivity() {
 
+    var countingIdlingResource = CountingIdlingResource("DATA_LOADER")
     lateinit var compositeDisposable: CompositeDisposable
     lateinit var repositoryAdapter: RepositoryAdapter
     lateinit var repositoryScrollListener: RepositoryScrollListener
@@ -22,8 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        compositeDisposable = CompositeDisposable()
         configureViews()
-
         GithubRetrofit.getSearch(this, true)
     }
 
@@ -71,7 +73,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        compositeDisposable = CompositeDisposable()
         repositoryAdapter = RepositoryAdapter(this, ArrayList())
         listView.adapter = repositoryAdapter
         repositoryScrollListener = RepositoryScrollListener(this)
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         if (totalCount == repositoryAdapter.list.size) {
             repositoryScrollListener.disabled = true
         }
-
+        countingIdlingResource.decrement()
     }
 
 }

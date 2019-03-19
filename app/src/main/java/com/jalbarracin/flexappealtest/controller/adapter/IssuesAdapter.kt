@@ -9,9 +9,11 @@ package com.jalbarracin.flexappealtest.controller.adapter
 
 import android.app.Activity
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.model.Issue
+import com.jalbarracin.flexappealtest.service.tool.BrowserTool
 import kotlinx.android.synthetic.main.item_issue.view.*
 
 
@@ -22,6 +24,7 @@ class IssuesAdapter(
 
 
     class Holder(view: View) {
+        var linearLayout: LinearLayout = view.linearLayout
         var titleTextView: TextView = view.titleTextView
         var commentsTextView: TextView = view.commentsTextView
         var authorTextView: TextView = view.authorTextView
@@ -31,6 +34,9 @@ class IssuesAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val issue: Issue = list[position]
 
+        holder.linearLayout.setOnClickListener {
+            BrowserTool.show(activity, issue.htmlUrl)
+        }
         holder.titleTextView.text = issue.title
         holder.commentsTextView.text = "${issue.comments}"
         holder.authorTextView.text = issue.user!!.login

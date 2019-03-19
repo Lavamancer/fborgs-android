@@ -17,7 +17,8 @@ data class Issue(
     var createdAt: DateTime? = null,
     var updatedAt: DateTime? = null,
     var body: String? = null,
-    var comments: Int? = null
+    var comments: Int? = null,
+    var htmlUrl: String? = null
 
 ): Serializable
 

@@ -122,7 +122,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     app:materialIcon="facebook"
-                    app:materialIconColor="#fff"
+                    app:materialIconColor="@color/orangeLight"
                     app:materialIconSize="36dp"
                     android:scaleType="center"/>
             <net.steamcrafted.materialiconlib.MaterialIconView
@@ -131,7 +131,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     app:materialIcon="twitter"
-                    app:materialIconColor="#fff"
+                    app:materialIconColor="@color/orangeLight"
                     app:materialIconSize="36dp"
                     android:scaleType="center"/>
             <net.steamcrafted.materialiconlib.MaterialIconView
@@ -140,7 +140,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     app:materialIcon="share_variant"
-                    app:materialIconColor="#fff"
+                    app:materialIconColor="@color/orangeLight"
                     app:materialIconSize="36dp"
                     android:scaleType="center"/>
 

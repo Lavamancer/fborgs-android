@@ -10,8 +10,11 @@ package com.jalbarracin.flexappealtest.controller
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.jalbarracin.flexappealtest.controller.adapter.RepositoryAdapter
@@ -21,6 +24,8 @@ import com.jalbarracin.flexappealtest.service.GithubRetrofit
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.include_header.*
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,9 +51,22 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun configureViews() {
+        configureHeader()
+        repositoryAdapter = RepositoryAdapter(this, ArrayList())
+        listView.adapter = repositoryAdapter
+        pageableScrollListener = object: PageableScrollListener() {
+            override fun loadData(offset: Int) {
+                GithubRetrofit.getSearch(this@MainActivity, false, offset, repositoryAdapter.searchText)
+            }
+        }
+        listView.setOnScrollListener(pageableScrollListener)
+    }
+
+    fun configureHeader() {
         sideMenuIconView.setOnClickListener {
             drawerLayout.openDrawer(Gravity.LEFT)
         }
+
         searchIconView.setOnClickListener {
             if (titleLinearLayout.visibility == View.VISIBLE) {
                 titleLinearLayout.visibility = View.GONE
@@ -72,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
         backIconView.setOnClickListener {
             titleLinearLayout.visibility = View.VISIBLE
             searchRelativeLayout.visibility = View.GONE
@@ -87,14 +106,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        repositoryAdapter = RepositoryAdapter(this, ArrayList())
-        listView.adapter = repositoryAdapter
-        pageableScrollListener = object: PageableScrollListener() {
-            override fun loadData(offset: Int) {
-                GithubRetrofit.getSearch(this@MainActivity, false, offset, repositoryAdapter.searchText)
+        searchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    searchIconView.performClick()
+                    return true
+                }
+                return false
             }
-        }
-        listView.setOnScrollListener(pageableScrollListener)
+        })
     }
 
     fun updateListView(result: List<Repository>, totalCount: Int, newSearch: Boolean) {

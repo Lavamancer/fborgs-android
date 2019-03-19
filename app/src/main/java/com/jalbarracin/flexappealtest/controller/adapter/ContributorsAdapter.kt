@@ -10,6 +10,7 @@ package com.jalbarracin.flexappealtest.controller.adapter
 import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.jalbarracin.flexappealtest.R
@@ -25,6 +26,7 @@ class ContributorsAdapter(
 
 
     class Holder(view: View) {
+        var linearLayout: LinearLayout = view.linearLayout
         var nameTextView: TextView = view.nameTextView
         var avatarImageView: ImageView = view.avatarImageView
         var contributionsTextView: TextView = view.contributionsTextView
@@ -35,12 +37,14 @@ class ContributorsAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val owner: Owner = list[position]
 
+        holder.linearLayout.setOnClickListener {
+            BrowserTool.show(activity, owner.htmlUrl)
+        }
+
         holder.nameTextView.text = owner.login
         holder.contributionsTextView.text = "${owner.contributions}"
         holder.urlTextView.text = owner.htmlUrl
-        holder.urlTextView.setOnClickListener {
-            BrowserTool.show(activity, owner.htmlUrl)
-        }
+
         if (owner.avatarUrl != null) {
             Glide.with(activity).load(owner.avatarUrl).into(holder.avatarImageView)
         }

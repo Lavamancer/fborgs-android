@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object GithubRetrofit {
 
-    private const val PAGINATION_LIMIT = 50
+    private const val PAGINATION_LIMIT = 20
 
     private var githubApi: GithubApi
 
@@ -71,7 +71,7 @@ object GithubRetrofit {
                     activity.updateListView(it.items, it.totalCount, newSearch)
                 },{
                     dialog.dismiss()
-                    Toast.makeText(activity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
                     activity.updateListView(ArrayList(), 0, newSearch)
                 })
         )
@@ -86,21 +86,21 @@ object GithubRetrofit {
                 .subscribe({
                     fragment.updateListView(it)
                 },{
-                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
                 })
         )
     }
 
-    fun getIssues(fragment: IssuesFragment) {
+    fun getIssues(fragment: IssuesFragment, offset: Int = 0) {
         val repositoryActivity = (fragment.activity as RepositoryActivity)
         repositoryActivity.compositeDisposable.add(
-            githubApi.getIssues(repositoryActivity.repository.name)
+            githubApi.getIssues(repositoryActivity.repository.name, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     fragment.updateListView(it)
                 },{
-                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute or 60 per hour", Toast.LENGTH_SHORT).show()
                 })
         )
     }

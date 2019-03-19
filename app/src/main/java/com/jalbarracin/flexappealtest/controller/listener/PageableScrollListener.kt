@@ -3,7 +3,7 @@ package com.jalbarracin.flexappealtest.controller.listener
 import android.widget.AbsListView
 
 
-abstract class PaginableScrollListener: AbsListView.OnScrollListener {
+abstract class PageableScrollListener: AbsListView.OnScrollListener {
 
     private var visibleThreshold = 5
     private var currentPage = 0

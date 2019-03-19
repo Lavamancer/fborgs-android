@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.jalbarracin.flexappealtest.controller.adapter.RepositoryAdapter
-import com.jalbarracin.flexappealtest.controller.listener.RepositoryScrollListener
+import com.jalbarracin.flexappealtest.controller.listener.PageableScrollListener
 import com.jalbarracin.flexappealtest.model.Repository
 import com.jalbarracin.flexappealtest.service.GithubRetrofit
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     var countingIdlingResource = CountingIdlingResource("DATA_LOADER")
     lateinit var compositeDisposable: CompositeDisposable
     lateinit var repositoryAdapter: RepositoryAdapter
-    lateinit var repositoryScrollListener: RepositoryScrollListener
+    lateinit var pageableScrollListener: PageableScrollListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     repositoryAdapter.clear()
                     repositoryAdapter.searchText = searchText
-                    repositoryScrollListener.clear()
+                    pageableScrollListener.clear()
                     GithubRetrofit.getSearch(this, true,0, searchText)
                 }
             }
@@ -75,15 +75,19 @@ class MainActivity : AppCompatActivity() {
             if (repositoryAdapter.searchText != null) {
                 repositoryAdapter.clear()
                 repositoryAdapter.searchText = null
-                repositoryScrollListener.clear()
+                pageableScrollListener.clear()
                 GithubRetrofit.getSearch(this, true)
             }
         }
 
         repositoryAdapter = RepositoryAdapter(this, ArrayList())
         listView.adapter = repositoryAdapter
-        repositoryScrollListener = RepositoryScrollListener(this)
-        listView.setOnScrollListener(repositoryScrollListener)
+        pageableScrollListener = object: PageableScrollListener() {
+            override fun loadData(offset: Int) {
+                GithubRetrofit.getSearch(this@MainActivity, false, offset, repositoryAdapter.searchText)
+            }
+        }
+        listView.setOnScrollListener(pageableScrollListener)
     }
 
     fun updateListView(result: List<Repository>, totalCount: Int, newSearch: Boolean) {
@@ -97,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (totalCount == repositoryAdapter.list.size) {
-            repositoryScrollListener.disabled = true
+            pageableScrollListener.disabled = true
         }
         countingIdlingResource.decrement()
     }

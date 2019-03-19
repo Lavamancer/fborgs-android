@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.adapter.ContributorsAdapter
-import com.jalbarracin.flexappealtest.controller.listener.PaginableScrollListener
+import com.jalbarracin.flexappealtest.controller.listener.PageableScrollListener
 import com.jalbarracin.flexappealtest.model.Owner
 import com.jalbarracin.flexappealtest.service.GithubRetrofit
 import kotlinx.android.synthetic.main.fragment_contributors.*
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_contributors.*
 class ContributorsFragment: Fragment() {
 
     lateinit var contributorsAdapter: ContributorsAdapter
-    lateinit var paginableScrollListener: PaginableScrollListener
+    lateinit var pageableScrollListener: PageableScrollListener
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -27,18 +27,18 @@ class ContributorsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         contributorsAdapter = ContributorsAdapter(activity!!, ArrayList())
         listView.adapter = contributorsAdapter
-        paginableScrollListener = object : PaginableScrollListener() {
+        pageableScrollListener = object : PageableScrollListener() {
             override fun loadData(offset: Int) {
                 GithubRetrofit.getContributors(this@ContributorsFragment, offset)
             }
         }
-        listView.setOnScrollListener(paginableScrollListener)
+        listView.setOnScrollListener(pageableScrollListener)
         GithubRetrofit.getContributors(this)
     }
 
     fun updateListView(list: List<Owner>) {
         if (list.isEmpty()) {
-            paginableScrollListener.disabled = true
+            pageableScrollListener.disabled = true
         }
         contributorsAdapter.update(list)
     }

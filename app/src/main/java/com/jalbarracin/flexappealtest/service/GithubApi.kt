@@ -11,6 +11,7 @@ import retrofit2.http.Query
 
 interface GithubApi {
 
+
     @GET("/search/repositories")
     fun getSearchRepositories(
         @Query("q") query: String,
@@ -24,6 +25,9 @@ interface GithubApi {
         @Query("per_page") limit: Int): Observable<List<Owner>>
 
     @GET("/repos/facebook/{name}/issues")
-    fun getIssues(@Path("name") name: String?): Observable<List<Issue>>
+    fun getIssues(
+        @Path("name") name: String?,
+        @Query("page") offset: Int,
+        @Query("per_page") limit: Int): Observable<List<Issue>>
 
 }

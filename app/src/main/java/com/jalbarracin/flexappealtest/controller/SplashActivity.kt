@@ -5,24 +5,33 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jalbarracin.flexappealtest.R
 import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity() {
 
+    lateinit var compositeDisposable: CompositeDisposable
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        compositeDisposable = CompositeDisposable()
 
-        Observable.timer(1, TimeUnit.SECONDS)
+        compositeDisposable.add(
+            Observable.timer(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.computation())
-                .doOnNext {
-//                    FakerTool.load()
-                }
                 .subscribe {
                     startActivity(Intent(this, MainActivity::class.java))
                     overridePendingTransition(0, 0)
                     finish()
                 }
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
 }

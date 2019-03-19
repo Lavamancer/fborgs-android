@@ -23,7 +23,6 @@ class DetailsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val repository: Repository = activity!!.intent.getSerializableExtra("repository") as Repository
         val repository = (activity as RepositoryActivity).repository
 
         nameTextView.text = repository.name

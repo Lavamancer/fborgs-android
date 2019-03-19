@@ -25,19 +25,4 @@ object BrowserTool {
     }
 
 
-//    fun share(activity: Activity, title: String, body: String, url: String) {
-//        try {
-//            val i = Intent(Intent.ACTION_SEND)
-//            i.type = "text/plain"
-//            i.putExtra(Intent.EXTRA_SUBJECT, title)
-//            var sAux = "\n" + body + "\n\n"
-//            sAux = sAux + url
-//            i.putExtra(Intent.EXTRA_TEXT, sAux)
-//            activity.startActivity(Intent.createChooser(i, "Elige una opción"))
-//        } catch (e: Exception) {
-//            Toast.makeText(activity, "No se pudo compartir el enlace", Toast.LENGTH_SHORT).show()
-//            e.printStackTrace()
-//        }
-//    }
-
 }

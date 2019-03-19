@@ -9,16 +9,12 @@ class Application : android.app.Application() {
 
     override fun onCreate() {
         super.onCreate()
-        session =
-            Session.create(this)
+        session = Session.create(this)
     }
 
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        Session.store(
-            this,
-            session
-        )
+        Session.store(this, session)
     }
 
 }

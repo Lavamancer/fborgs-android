@@ -9,6 +9,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
+        android:gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
@@ -35,11 +36,12 @@
 
         <LinearLayout
             android:orientation="vertical"
+
+            android:layout_margin="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:layout_margin="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -62,7 +64,6 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
-                    android:layout_marginEnd="15dp"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -98,7 +99,6 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textSize="14sp"
-                    android:layout_marginStart="6dp"
                     android:textColor="@color/orangeLight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

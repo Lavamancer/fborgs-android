@@ -23,6 +23,7 @@ class RepositoryActivity: AppCompatActivity() {
     lateinit var compositeDisposable: CompositeDisposable
     lateinit var repository: Repository
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.jalbarracin.flexappealtest.R.layout.activity_repository)
@@ -43,6 +44,7 @@ class RepositoryActivity: AppCompatActivity() {
         fragments.add(ContributorsFragment())
         fragments.add(IssuesFragment())
         viewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
+        viewPager.offscreenPageLimit = 2
         tabLayout.addOnTabSelectedListener(CustomOnTabSelectedListener(viewPager))
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         searchIconView.visibility = View.GONE
@@ -58,8 +60,8 @@ class RepositoryActivity: AppCompatActivity() {
         val tabsCount = vg.childCount
         for (j in 0 until tabsCount) {
             val vgTab = vg.getChildAt(j) as ViewGroup
-            val tabChildsCount = vgTab.childCount
-            for (i in 0 until tabChildsCount) {
+            val tabChildCount = vgTab.childCount
+            for (i in 0 until tabChildCount) {
                 val tabViewChild = vgTab.getChildAt(i)
                 if (tabViewChild is TextView) {
                     tabViewChild.typeface = Typeface.create("sans-serif-condensed", Typeface.NORMAL)

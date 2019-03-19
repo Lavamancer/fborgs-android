@@ -1,5 +1,6 @@
 package com.jalbarracin.flexappealtest.service
 
+import com.jalbarracin.flexappealtest.model.Issue
 import com.jalbarracin.flexappealtest.model.Owner
 import com.jalbarracin.flexappealtest.model.response.GithubResponse
 import io.reactivex.Observable
@@ -19,9 +20,7 @@ interface GithubApi {
     @GET("/repos/facebook/{name}/contributors")
     fun getContributors(@Path("name") name: String?): Observable<List<Owner>>
 
-//    @GET("/orgs/facebook/repos")
-//    fun getFacebookRepositories(
-//        @Query("page") offset: Int,
-//        @Query("per_page") limit: Int): Observable<List<Repository>>
+    @GET("/repos/facebook/{name}/issues")
+    fun getIssues(@Path("name") name: String?): Observable<List<Issue>>
 
 }

@@ -3,7 +3,7 @@ package com.jalbarracin.flexappealtest.model
 import java.io.Serializable
 
 
-class Owner (
+data class Owner (
     var login: String? = null,
     var id: Long? = null,
     var nodeId: String? = null,

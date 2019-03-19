@@ -8,6 +8,7 @@ import com.jalbarracin.flexappealtest.controller.MainActivity
 import com.jalbarracin.flexappealtest.controller.ProgressBarController
 import com.jalbarracin.flexappealtest.controller.RepositoryActivity
 import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
+import com.jalbarracin.flexappealtest.controller.fragment.IssuesFragment
 import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -87,23 +88,18 @@ object GithubRetrofit {
         )
     }
 
-
-//    fun getRepositories(activity: Activity, adapter: BaseAdapter, list: ArrayList<Repository>, compositeDisposable: CompositeDisposable) {
-//        val dialog = ProgressBarController.create(activity)
-//        dialog.show()
-//        compositeDisposable.add(
-//            apiRepository.getFacebookRepositories(0, 1)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe({
-//                    list.clear()
-//                    list.addAll(it)
-//                    adapter.notifyDataSetChanged()
-//                    dialog.dismiss()
-//                },{
-//                    Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show()
-//                })
-//        )
-//    }
+    fun getIssues(fragment: IssuesFragment) {
+        val repositoryActivity = (fragment.activity as RepositoryActivity)
+        repositoryActivity.compositeDisposable.add(
+            githubApi.getIssues(repositoryActivity.repository.name)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    fragment.updateListView(it)
+                },{
+                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
+                })
+        )
+    }
 
 }

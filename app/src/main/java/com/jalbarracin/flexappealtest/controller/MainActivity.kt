@@ -63,10 +63,12 @@ class MainActivity : AppCompatActivity() {
             searchRelativeLayout.visibility = View.GONE
             backIconView.visibility = View.GONE
             sideMenuIconView.visibility = View.VISIBLE
-            repositoryAdapter.clear()
-            repositoryAdapter.searchText = null
-            repositoryScrollListener.clear()
-            GithubRetrofit.getSearch(this, true)
+            if (repositoryAdapter.searchText != null) {
+                repositoryAdapter.clear()
+                repositoryAdapter.searchText = null
+                repositoryScrollListener.clear()
+                GithubRetrofit.getSearch(this, true)
+            }
         }
 
         compositeDisposable = CompositeDisposable()

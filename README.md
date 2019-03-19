@@ -1,9 +1,9 @@
-# Android Recruitment Test Flex-Appeal
+# Facebook Organizations App
 
 Thank you for taking the time to do our technical test. 
 In order to avoid bounced emails we would like you to submit your results by uploading the relevant ZIP file to a shared Google Drive folder.
 Please make this a single zip file named {yourname}-{role-applied-for}.zip containing the project.
-juanalbarracin-androiddeveloper.zip
+juan-albarracin-android-developer.zip
 
 ## Coding Test
 

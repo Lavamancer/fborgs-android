@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.jalbarracin.flexappealtest.controller.adapter.RepositoryAdapter
+import com.jalbarracin.flexappealtest.controller.listener.RepositoryScrollListener
 import com.jalbarracin.flexappealtest.model.Repository
 import com.jalbarracin.flexappealtest.service.GithubRetrofit
 import io.reactivex.disposables.CompositeDisposable

@@ -12,6 +12,7 @@ import com.jalbarracin.flexappealtest.controller.adapter.CustomPagerAdapter
 import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
 import com.jalbarracin.flexappealtest.controller.fragment.DetailsFragment
 import com.jalbarracin.flexappealtest.controller.fragment.IssuesFragment
+import com.jalbarracin.flexappealtest.controller.listener.CustomOnTabSelectedListener
 import com.jalbarracin.flexappealtest.model.Repository
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_repository.*
@@ -45,9 +46,13 @@ class RepositoryActivity: AppCompatActivity() {
         fragments.add(IssuesFragment())
         viewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
         viewPager.offscreenPageLimit = 2
-        tabLayout.addOnTabSelectedListener(CustomOnTabSelectedListener(viewPager))
+        tabLayout.addOnTabSelectedListener(
+            CustomOnTabSelectedListener(
+                viewPager
+            )
+        )
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
-        searchIconView.visibility = View.GONE
+        searchIconView.visibility = View.INVISIBLE
         sideMenuIconView.visibility = View.GONE
         backIconView.visibility = View.VISIBLE
         backIconView.setOnClickListener {

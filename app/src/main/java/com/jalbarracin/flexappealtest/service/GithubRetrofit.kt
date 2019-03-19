@@ -5,11 +5,11 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jalbarracin.flexappealtest.controller.MainActivity
-import com.jalbarracin.flexappealtest.controller.ProgressBarController
 import com.jalbarracin.flexappealtest.controller.RepositoryActivity
 import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
 import com.jalbarracin.flexappealtest.controller.fragment.IssuesFragment
 import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
+import com.jalbarracin.flexappealtest.service.tool.ProgressBarTool
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -21,6 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object GithubRetrofit {
+
+    private const val PAGINATION_LIMIT = 50
 
     private var githubApi: GithubApi
 
@@ -54,14 +56,14 @@ object GithubRetrofit {
 
     fun getSearch(activity: MainActivity, newSearch: Boolean, offset: Int = 0, searchText: String? = null) {
         activity.countingIdlingResource.increment()
-        val dialog = ProgressBarController.create(activity)
+        val dialog = ProgressBarTool.create(activity)
         dialog.show()
         var q = "org:facebook"
         if (searchText != null) {
             q += " $searchText in:name"
         }
         activity.compositeDisposable.add(
-            githubApi.getSearchRepositories(q, offset, 20)
+            githubApi.getSearchRepositories(q, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
@@ -75,10 +77,10 @@ object GithubRetrofit {
         )
     }
 
-    fun getContributors(fragment: ContributorsFragment) {
+    fun getContributors(fragment: ContributorsFragment, offset: Int = 0) {
         val repositoryActivity = (fragment.activity as RepositoryActivity)
         repositoryActivity.compositeDisposable.add(
-            githubApi.getContributors(repositoryActivity.repository.name)
+            githubApi.getContributors(repositoryActivity.repository.name, offset, PAGINATION_LIMIT)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({

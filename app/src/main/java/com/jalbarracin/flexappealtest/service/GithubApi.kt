@@ -18,7 +18,10 @@ interface GithubApi {
         @Query("per_page") limit: Int): Observable<GithubResponse>
 
     @GET("/repos/facebook/{name}/contributors")
-    fun getContributors(@Path("name") name: String?): Observable<List<Owner>>
+    fun getContributors(
+        @Path("name") name: String?,
+        @Query("page") offset: Int,
+        @Query("per_page") limit: Int): Observable<List<Owner>>
 
     @GET("/repos/facebook/{name}/issues")
     fun getIssues(@Path("name") name: String?): Observable<List<Issue>>

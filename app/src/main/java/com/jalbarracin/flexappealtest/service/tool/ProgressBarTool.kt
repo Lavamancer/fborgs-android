@@ -1,4 +1,4 @@
-package com.jalbarracin.flexappealtest.controller
+package com.jalbarracin.flexappealtest.service.tool
 
 import android.app.Activity
 import android.app.Dialog
@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import com.jalbarracin.flexappealtest.R
 
 
-object ProgressBarController {
+object ProgressBarTool {
 
     fun create(activity: Activity, @ColorRes color: Int? = null): Dialog {
         val dialog = Dialog(activity)

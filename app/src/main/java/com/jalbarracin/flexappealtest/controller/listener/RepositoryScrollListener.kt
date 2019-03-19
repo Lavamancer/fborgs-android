@@ -1,6 +1,7 @@
-package com.jalbarracin.flexappealtest.controller
+package com.jalbarracin.flexappealtest.controller.listener
 
 import android.widget.AbsListView
+import com.jalbarracin.flexappealtest.controller.MainActivity
 import com.jalbarracin.flexappealtest.service.GithubRetrofit
 
 

@@ -6,6 +6,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jalbarracin.flexappealtest.controller.MainActivity
 import com.jalbarracin.flexappealtest.controller.ProgressBarController
+import com.jalbarracin.flexappealtest.controller.RepositoryActivity
+import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
 import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -56,7 +58,6 @@ object GithubRetrofit {
         if (searchText != null) {
             q += " $searchText in:name"
         }
-        println("Q $q")
         activity.compositeDisposable.add(
             githubApi.getSearchRepositories(q, offset, 20)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -68,6 +69,20 @@ object GithubRetrofit {
                     dialog.dismiss()
                     Toast.makeText(activity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
                     activity.updateListView(ArrayList(), 0, newSearch)
+                })
+        )
+    }
+
+    fun getContributors(fragment: ContributorsFragment) {
+        val repositoryActivity = (fragment.activity as RepositoryActivity)
+        repositoryActivity.compositeDisposable.add(
+            githubApi.getContributors(repositoryActivity.repository.name)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    fragment.updateListView(it)
+                },{
+                    Toast.makeText(repositoryActivity, "Github only allows 10 calls per minute", Toast.LENGTH_SHORT).show()
                 })
         )
     }

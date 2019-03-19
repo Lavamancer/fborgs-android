@@ -1,58 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <include layout="@layout/include_header"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        app:tabIndicatorHeight="5dp"
+        app:tabIndicatorColor="@color/orangeWhiteLightest"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        android:background="@color/orangeLighter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include layout="@layout/include_header"/>
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            app:tabIndicatorHeight="5dp"
-            app:tabIndicatorColor="@color/orangeWhiteLightest"
-            app:tabTextColor="@color/white"
-            app:tabSelectedTextColor="@color/white"
-            android:background="@color/orangeLighter"
+        android:layout_height="40dp">
+        <com.google.android.material.tabs.TabItem
+            android:text="Details"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
-            <com.google.android.material.tabs.TabItem
-                android:text="Details"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <com.google.android.material.tabs.TabItem
-                android:text="Contributors"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <com.google.android.material.tabs.TabItem
-                android:text="Issues"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:layout_height="match_parent" />
+        <com.google.android.material.tabs.TabItem
+            android:text="Contributors"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="match_parent" />
+        <com.google.android.material.tabs.TabItem
+            android:text="Issues"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.tabs.TabLayout>
 
-    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" />
 
-
-    <FrameLayout
-        android:id="@+id/sideMenuFrameLayout"
-        android:layout_gravity="start"
-        android:layout_width="300dp"
-        android:background="@color/colorPrimary"
-        android:layout_height="match_parent">
-        <include android:layout_height="match_parent"
-                 android:layout_width="match_parent"
-                 layout="@layout/include_sidemenu">
-        </include>
-    </FrameLayout>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

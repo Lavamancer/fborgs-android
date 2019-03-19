@@ -6,10 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jalbarracin.flexappealtest.R
+import com.jalbarracin.flexappealtest.controller.adapter.ContributorsAdapter
+import com.jalbarracin.flexappealtest.model.Owner
+import com.jalbarracin.flexappealtest.service.GithubRetrofit
+import kotlinx.android.synthetic.main.fragment_contributors.*
 
 
 class ContributorsFragment: Fragment() {
 
+    lateinit var contributorsAdapter: ContributorsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_contributors, container, false)
@@ -17,7 +22,13 @@ class ContributorsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("Hello Contributors")
+        contributorsAdapter = ContributorsAdapter(activity!!, ArrayList())
+        listView.adapter = contributorsAdapter
+        GithubRetrofit.getContributors(this)
+    }
+
+    fun updateListView(list: List<Owner>) {
+        contributorsAdapter.refresh(list)
     }
 
 }

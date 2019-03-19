@@ -61,24 +61,4 @@ class RepositoryAdapter(
         }
     }
 
-//        holder.authorTextView.text = "Id: ${repository.nodeId}"
-//        holder.authorTextView.text = "Id: ${repository.createdAt}"
-//        holder.titleTextView.maxLines = 2
-//        holder.authorTextView.text = event.author ?: "System"
-//        holder.dateTextView.text = event.date!!.toString("dd/MM/yyyy")
-//        holder.contentTextView.text = event.content
-//        holder.contentTextView.maxLines = 4
-
-//        if (repository.owner!!.avatarUrl != null) {
-//            holder.avatarImageView.visibility = View.VISIBLE
-//            Glide.with(activity).load(repository.owner!!.avatarUrl).into(holder.avatarImageView)
-//        } else {
-//            holder.avatarImageView.visibility = View.GONE
-//        }
-//        holder.linearLayout.setOnClickListener {
-//            val intent = Intent(activity, RepositoryActivity::class.java)
-//            intent.putExtra("event", event)
-//            activity.startActivity(intent)
-//        }
-
 }

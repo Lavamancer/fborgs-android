@@ -46,11 +46,10 @@
 
     </LinearLayout>
 
-
     <FrameLayout
             android:id="@+id/sideMenuFrameLayout"
             android:layout_gravity="start"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:background="@color/colorPrimary"
             android:layout_height="match_parent">
         <include android:layout_height="match_parent"

@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jalbarracin.flexappealtest.R
-import com.jalbarracin.flexappealtest.model.Repository
+import com.jalbarracin.flexappealtest.controller.RepositoryActivity
+import com.jalbarracin.flexappealtest.service.tool.BrowserTool
 import com.jalbarracin.flexappealtest.service.tool.ColorTool
 import kotlinx.android.synthetic.main.fragment_details.*
 import java.util.*
@@ -22,7 +23,8 @@ class DetailsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repository: Repository = activity!!.intent.getSerializableExtra("repository") as Repository
+//        val repository: Repository = activity!!.intent.getSerializableExtra("repository") as Repository
+        val repository = (activity as RepositoryActivity).repository
 
         nameTextView.text = repository.name
         fullNameTextView.text = repository.fullName
@@ -44,6 +46,9 @@ class DetailsFragment: Fragment() {
         licenseTextView.text = repository.license!!.name
         scoreTextView.text = "${repository.score}"
         homepageTextView.text = repository.homepage
+        homepageTextView.setOnClickListener {
+            BrowserTool.show(activity, repository.homepage)
+        }
         sizeTextView.text = "${repository.size}"
     }
 }

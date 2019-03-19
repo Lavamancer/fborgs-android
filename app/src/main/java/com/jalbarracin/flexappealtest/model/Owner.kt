@@ -21,7 +21,8 @@ class Owner (
     var eventsUrl: String? = null,
     var receivedEventsUrl: String? = null,
     var type: String? = null,
-    var siteAdmin: Boolean? = null
+    var siteAdmin: Boolean? = null,
+    var contributions: Int? = null
 ): Serializable
 
 /*

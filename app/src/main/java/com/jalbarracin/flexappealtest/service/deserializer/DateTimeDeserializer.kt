@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.service.deserializer
 
 import com.google.gson.*
@@ -9,6 +16,7 @@ class DateTimeDeserializer : JsonDeserializer<DateTime>, JsonSerializer<DateTime
 
     companion object {
         const val DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ" //"2009-04-02T04:51:54Z"
+        const val DATETIME_PRETTY_FORMAT = "dd MMMM yyyy"
     }
 
     @Throws(JsonParseException::class)

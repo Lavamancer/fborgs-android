@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.model
 
 import org.joda.time.DateTime
@@ -39,7 +46,12 @@ data class Repository (
     var homepage: String? = null,
     var score: Float? = null
 
-    ): Serializable
+    ): Serializable {
+
+    companion object {
+        const val KEY = "repository"
+    }
+}
 
 /*
   {

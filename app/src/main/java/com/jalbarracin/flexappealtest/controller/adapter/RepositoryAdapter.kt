@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.controller.adapter
 
 import android.app.Activity
@@ -8,6 +15,7 @@ import android.widget.TextView
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.RepositoryActivity
 import com.jalbarracin.flexappealtest.model.Repository
+import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import com.jalbarracin.flexappealtest.service.tool.ColorTool
 import kotlinx.android.synthetic.main.item_repository.view.*
 import net.steamcrafted.materialiconlib.MaterialIconView
@@ -39,7 +47,9 @@ class RepositoryAdapter(
 
         holder.nameTextView.text = repository.name
         holder.fullNameTextView.text = repository.fullName
-        holder.updatedAtTextView.text = "Updated on ${repository.updatedAt!!.toString("dd MMMM yyyy", Locale.ENGLISH)}"
+
+        val updatedAt = activity.getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
+        holder.updatedAtTextView.text = updatedAt
         holder.descriptionTextView.text = repository.description
 
         if (repository.language == null) {
@@ -56,7 +66,7 @@ class RepositoryAdapter(
 
         holder.linearLayout.setOnClickListener {
             val intent = Intent(activity, RepositoryActivity::class.java)
-            intent.putExtra("repository", repository)
+            intent.putExtra(Repository.KEY, repository)
             activity.startActivity(intent)
         }
     }

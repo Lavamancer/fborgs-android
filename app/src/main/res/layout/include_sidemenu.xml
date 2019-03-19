@@ -65,14 +65,14 @@
                     style="@style/CustomTextViewStyle"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:text="Flex-Appeal"
+                    android:text="@string/flexappeal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <TextView
                     style="@style/CustomTextViewStyle"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:text="Android Recruitment Test"
+                    android:text="@string/androidrecruitmenttest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -96,13 +96,13 @@
 
             <TextView
                     style="@style/CustomTextViewStyle"
-                    android:text="© 2019 Juan Albarracin."
+                    android:text="@string/sidemenu_copyright"
                     android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <TextView
                     style="@style/CustomTextViewStyle"
-                    android:text="All rights reserved."
+                    android:text="@string/sidemenu_rights"
                     android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

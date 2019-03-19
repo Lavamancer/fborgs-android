@@ -1,9 +1,17 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.service.tool
 
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import com.jalbarracin.flexappealtest.R
 
 
 object BrowserTool {
@@ -18,7 +26,7 @@ object BrowserTool {
             val webPage = Uri.parse(url)
             activity!!.startActivity(Intent(Intent.ACTION_VIEW, webPage))
         } catch (e: Exception) {
-            Toast.makeText(activity, "This action could not be performed. Please install a browser in your device.", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, activity!!.getString(R.string.browser_not_installed), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
 

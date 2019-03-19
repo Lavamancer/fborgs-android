@@ -187,7 +187,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="Default branch"
+                android:text="@string/details_defaultbranch"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -218,7 +218,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="License"
+                android:text="@string/details_license"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -249,7 +249,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="Search score"
+                android:text="@string/details_searchscore"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -280,7 +280,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="Homepage"
+                android:text="@string/details_homepage"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -325,7 +325,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="Size"
+                android:text="@string/details_size"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -352,7 +352,7 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     style="@style/CustomTextViewStyle"
-                    android:text="KB"
+                    android:text="@string/details_kb"
                     android:textStyle="bold"
                     android:maxLines="1"
                     android:ellipsize="end"

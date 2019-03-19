@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.controller.fragment
 
 import android.os.Bundle
@@ -7,6 +14,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.RepositoryActivity
+import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import com.jalbarracin.flexappealtest.service.tool.BrowserTool
 import com.jalbarracin.flexappealtest.service.tool.ColorTool
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -27,7 +35,8 @@ class DetailsFragment: Fragment() {
 
         nameTextView.text = repository.name
         fullNameTextView.text = repository.fullName
-        updatedAtTextView.text = "Updated on ${repository.updatedAt!!.toString("dd MMMM yyyy", Locale.ENGLISH)}"
+        val updatedAt = getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
+        updatedAtTextView.text = updatedAt
         descriptionTextView.text = repository.description
 
         if (repository.language == null) {

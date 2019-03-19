@@ -44,14 +44,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Flex-Appeal"
+            android:text="@string/flexappeal"
             style="@style/CustomTextViewStyle"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
-            android:text="Android Recruitment Test"
+            android:text="@string/androidrecruitmenttest"
             style="@style/CustomTextViewStyle"
             android:textColor="@color/white"
             android:layout_marginTop="-5dp"
@@ -74,7 +74,7 @@
             android:textSize="18sp"
             android:textColor="@color/white"
             android:backgroundTint="@color/white"
-            android:hint="Search..."
+            android:hint="@string/header_searchhint"
             android:textColorHint="@color/orangeWhite"
             style="@style/CustomTextViewStyle"
             android:layout_centerInParent="true"

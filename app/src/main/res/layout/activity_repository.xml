@@ -17,15 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="40dp">
         <com.google.android.material.tabs.TabItem
-            android:text="Details"
+            android:text="@string/repository_details"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <com.google.android.material.tabs.TabItem
-            android:text="Contributors"
+            android:text="@string/repository_contributors"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <com.google.android.material.tabs.TabItem
-            android:text="Issues"
+            android:text="@string/repository_issues"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.tabs.TabLayout>

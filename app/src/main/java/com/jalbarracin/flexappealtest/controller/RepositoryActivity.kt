@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 19/03/19 14:25
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 19/03/19 14:25
+ */
+
 package com.jalbarracin.flexappealtest.controller
 
 import android.graphics.Typeface
@@ -28,7 +35,7 @@ class RepositoryActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.jalbarracin.flexappealtest.R.layout.activity_repository)
-        repository = intent.getSerializableExtra("repository") as Repository
+        repository = intent.getSerializableExtra(Repository.KEY) as Repository
         compositeDisposable = CompositeDisposable()
         configureViews()
     }

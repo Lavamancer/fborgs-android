@@ -13,8 +13,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.model.Issue
+import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import com.jalbarracin.flexappealtest.service.tool.BrowserTool
 import kotlinx.android.synthetic.main.item_issue.view.*
+import java.util.*
 
 
 class IssuesAdapter(
@@ -28,6 +30,7 @@ class IssuesAdapter(
         var titleTextView: TextView = view.titleTextView
         var commentsTextView: TextView = view.commentsTextView
         var authorTextView: TextView = view.authorTextView
+        var updatedAtTextView: TextView = view.updatedAtTextView
         var bodyTextView: TextView = view.bodyTextView
     }
 
@@ -41,6 +44,9 @@ class IssuesAdapter(
         holder.commentsTextView.text = "${issue.comments}"
         holder.authorTextView.text = issue.user!!.login
         holder.bodyTextView.text = issue.body
+        val updatedAt = activity.getString(R.string.updated_on) + " ${issue.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
+        holder.updatedAtTextView.text = updatedAt
+
     }
 
 }

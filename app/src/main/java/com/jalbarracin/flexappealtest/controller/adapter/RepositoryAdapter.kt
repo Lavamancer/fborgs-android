@@ -48,8 +48,13 @@ class RepositoryAdapter(
         holder.nameTextView.text = repository.name
         holder.fullNameTextView.text = repository.fullName
 
-        val updatedAt = activity.getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
-        holder.updatedAtTextView.text = updatedAt
+        if (repository.updatedAt != null) {
+            val updatedAt = activity.getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
+            holder.updatedAtTextView.visibility = View.VISIBLE
+            holder.updatedAtTextView.text = updatedAt
+        } else {
+            holder.updatedAtTextView.visibility = View.GONE
+        }
         holder.descriptionTextView.text = repository.description
 
         if (repository.language == null) {

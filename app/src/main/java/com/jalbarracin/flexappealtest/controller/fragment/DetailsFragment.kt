@@ -51,7 +51,7 @@ class DetailsFragment: Fragment() {
         forksTextView.text = repository.forks.toString()
         openIssuesTextView.text = repository.openIssues.toString()
         defaultBranchTextView.text = repository.defaultBranch
-        licenseTextView.text = repository.license!!.name
+        licenseTextView.text = if (repository.license == null) getString(R.string.details_nolicense) else repository.license!!.name
         scoreTextView.text = "${repository.score}"
         homepageTextView.text = repository.homepage
         homepageTextView.setOnClickListener {

@@ -42,7 +42,12 @@ class IssuesAdapter(
         }
         holder.titleTextView.text = issue.title
         holder.commentsTextView.text = "${issue.comments}"
-        holder.authorTextView.text = issue.user!!.login
+        if (issue.user != null) {
+            holder.authorTextView.visibility = View.VISIBLE
+            holder.authorTextView.text = issue.user!!.login
+        } else {
+            holder.authorTextView.visibility = View.GONE
+        }
         holder.bodyTextView.text = issue.body
         val updatedAt = activity.getString(R.string.updated_on) + " ${issue.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
         holder.updatedAtTextView.text = updatedAt

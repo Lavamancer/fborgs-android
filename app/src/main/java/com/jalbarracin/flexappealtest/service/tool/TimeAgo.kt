@@ -18,8 +18,8 @@ object TimeAgo {
         times["second"] = TimeUnit.SECONDS.toMillis(1)
     }
 
-    fun toRelative(duration: Long, maxLevel: Int): String {
-        var duration = duration
+    private fun toRelative(duration: Long, maxLevel: Int): String {
+        var d = duration
         val res = StringBuilder()
         var level = 0
         for (time in times.entries) {
@@ -30,19 +30,19 @@ object TimeAgo {
                     .append(time.key)
                     .append(if (timeDelta > 1) "s" else "")
                     .append(", ")
-                duration -= time.value * timeDelta
+                d -= time.value * timeDelta
                 level++
             }
             if (level == maxLevel) {
                 break
             }
         }
-        if ("" == res.toString()) {
-            return "0 seconds ago"
+        return if (res.toString().isEmpty()) {
+            "0 seconds ago"
         } else {
             res.setLength(res.length - 2)
             res.append(" ago")
-            return res.toString()
+            res.toString()
         }
     }
 
@@ -50,17 +50,8 @@ object TimeAgo {
         return toRelative(dateTime.toDate(), DateTime.now().toDate(), 1)
     }
 
-    fun toRelative(duration: Long): String {
-        return toRelative(duration, times.size)
-    }
-
-    fun toRelative(start: Date, end: Date): String {
-        assert(start.after(end))
-        return toRelative(end.getTime() - start.getTime())
-    }
-
     fun toRelative(start: Date, end: Date, level: Int): String {
         assert(start.after(end))
-        return toRelative(end.getTime() - start.getTime(), level)
+        return toRelative(end.time - start.time, level)
     }
 }

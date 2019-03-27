@@ -1,3 +1,10 @@
+/*
+ * Created by Juan Albarracin on 27/03/19 11:14
+ * Copyright (c) 2019. All right reserved.
+ *
+ * Last modified 27/03/19 11:14
+ */
+
 package com.jalbarracin.flexappealtest.service.tool
 
 import org.joda.time.DateTime

@@ -68,13 +68,12 @@ class RepositoryActivity: AppCompatActivity() {
         backIconView.setOnClickListener {
             onBackPressed()
         }
-        viewPager.currentItem = 2
 
-        // todo header test config
-        configureViewsTest()
+        configureViewsTestDesign()
     }
 
-    private fun configureViewsTest() {
+    private fun configureViewsTestDesign() {
+        viewPager.currentItem = 2
         backLinearLayout.setOnClickListener {
             onBackPressed()
         }

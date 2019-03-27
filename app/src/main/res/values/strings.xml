@@ -7,19 +7,25 @@
     <string name="github_forbidden_response">Github only allows 10 calls per minute or 60 per hour</string>
     <string name="browser_not_installed">This action could not be performed. Please install a browser in your device.</string>
     <string name="updated_on">Updated on</string>
+    <string name="comments">comments</string>
+    <string name="by">by</string>
 
     <string name="sidemenu_copyright">© 2019 Juan Albarracin.</string>
     <string name="sidemenu_rights">All rights reserved.</string>
+
     <string name="header_searchhint">Search...</string>
+
     <string name="details_defaultbranch">Default branch</string>
     <string name="details_license">License</string>
     <string name="details_searchscore">Search score</string>
     <string name="details_homepage">Homepage</string>
     <string name="details_size">Size</string>
     <string name="details_kb">KB</string>
+    <string name="details_nolicense">No license</string>
+
     <string name="repository_details">Details</string>
     <string name="repository_contributors">Contributors</string>
     <string name="repository_issues">Issues</string>
-    <string name="details_nolicense">No license</string>
+
 
 </resources>

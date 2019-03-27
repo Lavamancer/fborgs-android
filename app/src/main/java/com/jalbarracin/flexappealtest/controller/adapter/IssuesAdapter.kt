@@ -13,10 +13,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.model.Issue
-import com.jalbarracin.flexappealtest.service.deserializer.DateTimeDeserializer
 import com.jalbarracin.flexappealtest.service.tool.BrowserTool
+import com.jalbarracin.flexappealtest.service.tool.TimeAgo
 import kotlinx.android.synthetic.main.item_issue.view.*
-import java.util.*
 
 
 class IssuesAdapter(
@@ -29,9 +28,7 @@ class IssuesAdapter(
         var linearLayout: LinearLayout = view.linearLayout
         var titleTextView: TextView = view.titleTextView
         var commentsTextView: TextView = view.commentsTextView
-        var authorTextView: TextView = view.authorTextView
-        var updatedAtTextView: TextView = view.updatedAtTextView
-        var bodyTextView: TextView = view.bodyTextView
+        var updatedAtAndAuthor: TextView = view.updatedAtAndAuthorTextView
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -41,17 +38,14 @@ class IssuesAdapter(
             BrowserTool.show(activity, issue.htmlUrl)
         }
         holder.titleTextView.text = issue.title
-        holder.commentsTextView.text = "${issue.comments}"
-        if (issue.user != null) {
-            holder.authorTextView.visibility = View.VISIBLE
-            holder.authorTextView.text = issue.user!!.login
-        } else {
-            holder.authorTextView.visibility = View.GONE
-        }
-        holder.bodyTextView.text = issue.body
-        val updatedAt = activity.getString(R.string.updated_on) + " ${issue.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
-        holder.updatedAtTextView.text = updatedAt
+        val comments = "${issue.comments} ${activity.getString(R.string.comments)}"
+        holder.commentsTextView.text = comments
 
+        var updatedAtAndAuthor = TimeAgo.toRelative(issue.updatedAt!!)
+        if (issue.user != null) {
+            updatedAtAndAuthor += " ${activity.getString(R.string.by)} " + issue.user!!.login
+        }
+        holder.updatedAtAndAuthor.text = updatedAtAndAuthor
     }
 
 }

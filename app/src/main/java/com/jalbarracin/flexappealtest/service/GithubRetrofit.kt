@@ -35,6 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object GithubRetrofit {
 
     private const val PAGINATION_LIMIT = 20
+    private const val PAGINATION_LIMIT_ISSUES = 10
     private const val BASE_URL = "https://api.github.com"
     private const val PARAM_ORG_FACEBOOK = "org:facebook"
     private const val PARAM_IN_NAME = "in:name"
@@ -116,7 +117,7 @@ object GithubRetrofit {
         val repositoryActivity = (fragment.activity as RepositoryActivity)
         repositoryActivity.issuesProgressBar.visibility = View.VISIBLE
         repositoryActivity.compositeDisposable.add(
-            githubApi.getIssues(repositoryActivity.repository.name, offset, PAGINATION_LIMIT)
+            githubApi.getIssues(repositoryActivity.repository.name, offset, PAGINATION_LIMIT_ISSUES)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({

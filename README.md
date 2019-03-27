@@ -1,3 +1,25 @@
+## Coding Test
+
+In the previous test you’ve created an application where the repositories of the Facebook organization were listed.
+In this test we will add some complexity to the application.
+The job is to be able to click on a repository in the list where all the issues will be listed for the repository. 
+More information on listing the issues for a repository can be found here.. As you can see the collection contains pagination, which should be implemented as well. 
+You can test this with the facebook/buck repository which currently has ~420 open issues.
+After implementing the pagination, the screen should be implemented like this design. We used Marvel to handoff the designs to the developers. 
+As you can see, you can see all the dimensions of the design within the tool.
+The reason we want this design to be implemented is because at Flex-Appeal we attach great value to the product and the implementation of the design. 
+
+## Acceptance criteria
+
+DONE - The repository can be clicked and will transition to the designed screen, where all the open issues are shown for the repository.
+DONE - The list of open issues will be implemented using pagination of 10 items per page. 
+DONE - The scroll view should be scrolled smoothly.
+The open issues list is implemented via the delivered design.
+All the elements in the design should be custom made. A material design library cannot be used.
+
+
+
+
 # Facebook Organizations App
 
 Thank you for taking the time to do our technical test. 

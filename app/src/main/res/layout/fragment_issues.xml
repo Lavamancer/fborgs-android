@@ -9,10 +9,8 @@
         android:background="@color/grayLighter"
         android:id="@+id/listView"
         tools:listitem="@layout/item_issue"
-        android:paddingTop="10dp"
-        android:paddingBottom="30dp"
-        android:divider="@color/grayLighter"
-        android:dividerHeight="10dp"
+        android:divider="@color/grayBackground"
+        android:dividerHeight="1dp"
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -65,6 +65,7 @@ class RepositoryActivity: AppCompatActivity() {
         backIconView.setOnClickListener {
             onBackPressed()
         }
+        viewPager.currentItem = 2
     }
 
     private fun typefaceCondensed(tabLayout: TabLayout) {

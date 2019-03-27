@@ -10,6 +10,10 @@
     <color name="grayLight">#d7d7d7</color>
     <color name="grayLighter">#e9e9e9</color>
 
+    <color name="grayBackground">#F6F6F6</color>
+    <color name="grayFont">#8F8F8F</color>
+    <color name="grayIcon">#bfbfbf</color>
+
     <color name="orangeStrong">#e54304</color>
     <color name="orange">#ee6002</color>
     <color name="orangeLight">#f47100</color>

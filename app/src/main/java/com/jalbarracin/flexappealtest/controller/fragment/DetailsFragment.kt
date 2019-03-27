@@ -35,8 +35,13 @@ class DetailsFragment: Fragment() {
 
         nameTextView.text = repository.name
         fullNameTextView.text = repository.fullName
-        val updatedAt = getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
-        updatedAtTextView.text = updatedAt
+        if (repository.updatedAt == null) {
+            updatedAtTextView.visibility = View.VISIBLE
+            val updatedAt = getString(R.string.updated_on) + " ${repository.updatedAt!!.toString(DateTimeDeserializer.DATETIME_PRETTY_FORMAT, Locale.ENGLISH)}"
+            updatedAtTextView.text = updatedAt
+        } else {
+            updatedAtTextView.visibility = View.GONE
+        }
         descriptionTextView.text = repository.description
 
         if (repository.language == null) {
@@ -55,6 +60,7 @@ class DetailsFragment: Fragment() {
         scoreTextView.text = "${repository.score}"
         homepageTextView.text = repository.homepage
         homepageTextView.setOnClickListener {
+            val activity = activity ?: return@setOnClickListener
             BrowserTool.show(activity, repository.homepage)
         }
         sizeTextView.text = "${repository.size}"

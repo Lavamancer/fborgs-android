@@ -17,16 +17,16 @@ import com.jalbarracin.flexappealtest.R
 object BrowserTool {
 
 
-    fun show(activity: Activity?, url: String?) {
+    fun show(activity: Activity, url: String?) {
         if (url == null || url.isEmpty()) {
             println("It's not a valid url to open with a browser")
             return
         }
         try {
             val webPage = Uri.parse(url)
-            activity!!.startActivity(Intent(Intent.ACTION_VIEW, webPage))
+            activity.startActivity(Intent(Intent.ACTION_VIEW, webPage))
         } catch (e: Exception) {
-            Toast.makeText(activity, activity!!.getString(R.string.browser_not_installed), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, activity.getString(R.string.browser_not_installed), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
 

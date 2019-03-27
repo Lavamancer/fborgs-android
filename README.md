@@ -1,4 +1,4 @@
-## Coding Test
+# Coding Test
 
 In the previous test you’ve created an application where the repositories of the Facebook organization were listed.
 In this test we will add some complexity to the application.
@@ -14,8 +14,8 @@ The reason we want this design to be implemented is because at Flex-Appeal we at
 DONE - The repository can be clicked and will transition to the designed screen, where all the open issues are shown for the repository.
 DONE - The list of open issues will be implemented using pagination of 10 items per page. 
 DONE - The scroll view should be scrolled smoothly.
-The open issues list is implemented via the delivered design.
-All the elements in the design should be custom made. A material design library cannot be used.
+DONE - The open issues list is implemented via the delivered design. (I think just the list)
+DONE - All the elements in the design should be custom made. A material design library cannot be used.
 
 
 

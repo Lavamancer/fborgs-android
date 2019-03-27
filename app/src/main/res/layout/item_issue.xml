@@ -19,10 +19,9 @@
         <TextView
             android:id="@+id/titleTextView"
             style="@style/CustomTextViewStyle"
-            android:layout_toStartOf="@id/commentsLinearLayout"
             android:text="How to import module without module name in objective c?"
             android:ellipsize="end"
-            android:textStyle="bold"
+            android:fontFamily="@font/sf_pro_text_regular"
             android:textSize="17sp"
             android:textColor="@color/black"
             android:layout_width="match_parent"
@@ -31,49 +30,59 @@
         <RelativeLayout
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="22dp">
 
             <TextView
                 android:id="@+id/updatedAtAndAuthorTextView"
-                style="@style/CustomTextViewStyle"
-                android:layout_toStartOf="@id/commentsLinearLayout"
+                android:layout_toStartOf="@id/commentsImageView"
                 android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="@font/sf_pro_text_medium"
                 android:text="Updated on 11 Oct 2018 by hendych"
                 android:textSize="12sp"
+                android:layout_centerVertical="true"
                 android:textColor="@color/grayFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:id="@+id/commentsLinearLayout"
+            <ImageView
+                android:id="@+id/commentsImageView"
+                android:layout_toStartOf="@id/commentsTextView"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_mode_comment"
+                android:tint="@color/grayIcon"
+                android:layout_marginEnd="8dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"/>
+            <TextView
+                android:id="@+id/commentsTextView"
                 android:layout_alignParentEnd="true"
-                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                style="@style/CustomTextViewStyle"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="0 comments"
+                android:textSize="12sp"
+                android:textColor="@color/grayFont"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:materialIcon="comment"
-                    app:materialIconColor="@color/grayIcon"
-                    app:materialIconSize="15dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="8dp"
-                    android:scaleType="center"/>
-                <TextView
-                    android:id="@+id/commentsTextView"
-                    style="@style/CustomTextViewStyle"
-                    android:text="0 comments"
-                    android:textSize="12sp"
-                    android:textColor="@color/grayFont"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </RelativeLayout>
 
+
+
+
+
+
+        <!--<net.steamcrafted.materialiconlib.MaterialIconView-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:layout_width="15dp"-->
+        <!--android:layout_height="15dp"-->
+        <!--app:materialIcon="comment"-->
+        <!--app:materialIconColor="@color/grayIcon"-->
+        <!--app:materialIconSize="15dp"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:scaleType="center"/>-->
 
         <!--<TextView-->
             <!--android:id="@+id/bodyTextView"-->

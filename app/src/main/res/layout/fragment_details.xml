@@ -187,7 +187,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="@string/details_defaultbranch"
+                android:text="@string/details_default_branch"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"
@@ -249,7 +249,7 @@
 
             <TextView
                 style="@style/CustomTextViewStyle"
-                android:text="@string/details_searchscore"
+                android:text="@string/details_search_score"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="12sp"

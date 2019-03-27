@@ -11,10 +11,12 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
+import com.jalbarracin.flexappealtest.R
 import com.jalbarracin.flexappealtest.controller.adapter.CustomPagerAdapter
 import com.jalbarracin.flexappealtest.controller.fragment.ContributorsFragment
 import com.jalbarracin.flexappealtest.controller.fragment.DetailsFragment
@@ -24,6 +26,7 @@ import com.jalbarracin.flexappealtest.model.Repository
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_repository.*
 import kotlinx.android.synthetic.main.include_header.*
+import kotlinx.android.synthetic.main.include_header_test.*
 
 
 class RepositoryActivity: AppCompatActivity() {
@@ -66,6 +69,20 @@ class RepositoryActivity: AppCompatActivity() {
             onBackPressed()
         }
         viewPager.currentItem = 2
+
+        // todo header test config
+        configureViewsTest()
+    }
+
+    private fun configureViewsTest() {
+        backLinearLayout.setOnClickListener {
+            onBackPressed()
+        }
+        titleTextView.text = repository.name
+        val window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = getColor(R.color.blueToolBar)
+
     }
 
     private fun typefaceCondensed(tabLayout: TabLayout) {

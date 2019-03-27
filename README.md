@@ -66,5 +66,5 @@ So that I know more information about the repository
 ## Acceptance criteria
 
 The name, description and tags are displayed of the repository are displayed
-The detail page of the repository should contain a tab bar to view a list of contributors and issues
+The detail page of the repository should contain a TAB BAR to view a list of contributors and issues
 The list views should implement pagination with 20 items per page

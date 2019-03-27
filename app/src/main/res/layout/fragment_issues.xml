@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:background="@color/grayLighter"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grayLighter"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ListView
-        android:background="@color/grayLighter"
-        android:id="@+id/listView"
-        tools:listitem="@layout/item_issue"
-        android:divider="@color/grayBackground"
-        android:dividerHeight="1dp"
-        android:clipToPadding="false"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@color/grayBackgroundDark"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <EditText
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@drawable/ic_search"
+                android:hint="@string/issues_search_hint"
+                android:fontFamily="@font/sf_pro_text_regular"
+                android:textSize="15sp"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/grayBackgroundDark"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textColor="@color/black"
+                android:drawablePadding="6dp"
+                android:drawableTint="@color/grayBackgroundDark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+
+        <ListView
+            android:background="@color/grayLighter"
+            android:id="@+id/listView"
+            tools:listitem="@layout/item_issue"
+            android:divider="@color/grayBackground"
+            android:dividerHeight="1dp"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <ProgressBar
         android:visibility="gone"
         android:id="@+id/issuesProgressBar"
-        android:indeterminateTint="@color/orangeStrong"
+        android:indeterminateTint="@color/blueToolBar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -26,3 +60,41 @@
         android:layout_marginBottom="40dp"/>
 
 </RelativeLayout>
+
+
+
+
+
+
+
+
+
+<!--original layout-->
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+              <!--xmlns:tools="http://schemas.android.com/tools"-->
+              <!--android:background="@color/grayLighter"-->
+              <!--android:layout_width="match_parent"-->
+              <!--android:layout_height="match_parent">-->
+
+    <!--<ListView-->
+        <!--android:background="@color/grayLighter"-->
+        <!--android:id="@+id/listView"-->
+        <!--tools:listitem="@layout/item_issue"-->
+        <!--android:divider="@color/grayBackground"-->
+        <!--android:dividerHeight="1dp"-->
+        <!--android:clipToPadding="false"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <!--<ProgressBar-->
+        <!--android:visibility="gone"-->
+        <!--android:id="@+id/issuesProgressBar"-->
+        <!--android:indeterminateTint="@color/orangeStrong"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="40dp"/>-->
+
+<!--</RelativeLayout>-->

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="@color/blueToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+    <LinearLayout
+        android:id="@+id/backLinearLayout"
+        android:gravity="center_vertical"
+        android:paddingEnd="16dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:src="@drawable/ic_chevron_left"
+            android:layout_marginStart="12dp"
+            android:layout_width="21dp"
+            android:layout_height="21dp"/>
+
+        <TextView
+            android:layout_marginStart="2dp"
+            android:text="@string/back"
+            android:fontFamily="@font/sf_pro_text_regular"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_centerInParent="true"
+        android:text="Repository name"
+        android:fontFamily="@font/sf_pro_text_semibold"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

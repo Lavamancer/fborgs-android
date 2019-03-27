@@ -37,7 +37,11 @@ class IssuesAdapter(
         holder.linearLayout.setOnClickListener {
             BrowserTool.show(activity, issue.htmlUrl)
         }
-        holder.titleTextView.text = issue.title
+        if (issue.title != null) {
+            holder.titleTextView.text = issue.title!!.trim()
+        } else {
+            holder.titleTextView.text = activity.getString(R.string.no_title)
+        }
         val comments = "${issue.comments} ${activity.getString(R.string.comments)}"
         holder.commentsTextView.text = comments
 

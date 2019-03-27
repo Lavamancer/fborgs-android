@@ -26,6 +26,7 @@
     <string name="repository_details">Details</string>
     <string name="repository_contributors">Contributors</string>
     <string name="repository_issues">Issues</string>
+    <string name="no_title">No title</string>
 
 
 </resources>
